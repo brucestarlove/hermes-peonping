@@ -1,0 +1,11 @@
+{
+  "name": "peonping",
+  "label": "Sound Alerts",
+  "description": "Manage PeonPing voicepacks and preview lifecycle sounds. PeonPing by @garysheng; plugin by @brucestarlove.",
+  "icon": "Zap",
+  "version": "0.1.1",
+  "tab": { "path": "/peonping", "position": "after:plugins" },
+  "entry": "dist/index.js",
+  "css": "dist/style.css",
+  "api": "plugin_api.py"
+}

@@ -1,0 +1,17 @@
+name: peonping
+version: 0.1.1
+kind: standalone
+label: "Sound Alerts"
+description: "Sound Alerts: emit Hermes lifecycle events to PeonPing-compatible sound packs (session start/end, approvals, tool progress, failures). PeonPing by @garysheng; Hermes plugin by @brucestarlove."
+author: "@brucestarlove (Hermes plugin); @garysheng (PeonPing)"
+hooks:
+  - pre_tool_call
+  - pre_llm_call
+  - post_llm_call
+  - pre_approval_request
+  - post_tool_call
+  - subagent_stop
+  - on_session_finalize
+  - on_session_reset
+commands:
+  - peonping

@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hermes-peonping"
+version = "0.1.1"
+description = "Sound Alerts for Hermes Agent — bridge Hermes lifecycle events to PeonPing sound packs. PeonPing by @garysheng; plugin by @brucestarlove."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Bruce Starlove" },
+  { name = "Gary Sheng (PeonPing)" },
+]
+license = { text = "MIT" }
+dependencies = [
+  # hermes-agent provides the PluginContext API and hermes_constants.
+  # No version pin here — hermes-peonping follows whatever version the user
+  # has installed rather than forcing a specific hermes release.
+  "hermes-agent",
+]
+
+[project.entry-points."hermes_agent.plugins"]
+peonping = "hermes_peonping"
+
+# The repo root IS the hermes_peonping package (flat plugin layout so that
+# `hermes plugins install` works — it clones the repo and puts the root
+# directly into ~/.hermes/plugins/peonping/).
+[tool.setuptools.packages]
+find = {}
+
+[tool.setuptools.package-dir]
+hermes_peonping = "."
+
+[tool.setuptools.package-data]
+hermes_peonping = [
+  "plugin.yaml",
+  "dashboard/manifest.json",
+  "dashboard/dist/index.js",
+  "dashboard/dist/style.css",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--timeout=30 --timeout-method=signal"
